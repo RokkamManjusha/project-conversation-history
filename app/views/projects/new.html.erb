@@ -1,0 +1,12 @@
+<%= form_for :project do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div></br>
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, options_for_select(Project.STATUSes) %>
+  </div></br>
+    <%= form.submit %>
+<hr>
+<% end %>

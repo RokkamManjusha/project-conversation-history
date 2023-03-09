@@ -1,0 +1,33 @@
+<!-- app/views/projects/show.html.erb -->
+<h1><%= @project.name %></h1>
+
+<p>Status: <%= @project.status %></p>
+
+<%= form_with(model: @project, url: create_comment_project_path(@project), method: :patch) do |form| %>
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, options_for_select(Project::STATUSES, @project.status) %>
+  </div>
+<hr>
+
+<h2>Comments</h2>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+
+  <%= form.submit "Add comment" %>
+<% end %>
+
+
+<ul>
+  <% @project.comments.each do |comment| %>
+    <li>
+      <%= comment.body %>
+      <%= link_to "Delete", [@project, comment], method: :delete, data: { confirm: "Are you sure?" } %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

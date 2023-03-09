@@ -1,0 +1,4 @@
+<% @projects.each do |project| %>
+  <%= link_to project.title,  show_project_path(@project) %>
+<% end %>
+<%= link_to 'Create Project', new_project_path() %> |

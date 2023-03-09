@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ProjectConversationHistory</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>My Rails App</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <nav>
+      <ul>
+        <li><%= link_to 'Projects', projects_index_path %></li>
+      </ul>
+    </nav>
+
     <%= yield %>
+
+    <footer>
+      Copyright © <%= Time.now.year %> Project Comments History App
+    </footer>
   </body>
 </html>
